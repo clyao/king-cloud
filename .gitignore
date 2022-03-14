@@ -1,0 +1,3 @@
+# Project exclude paths
+/king-order-service/target/
+/king-user-service/target/
