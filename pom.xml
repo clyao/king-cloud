@@ -15,6 +15,7 @@
         <module>king-rabbitmq-consume-service</module>
         <module>king-order-service</module>
         <module>king-springbootadmin-service</module>
+        <module>king-redis-service</module>
     </modules>
 
     <packaging>pom</packaging>

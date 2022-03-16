@@ -1,0 +1,11 @@
+server:
+  port: 8015
+
+spring:
+  application:
+    name: king-redis-service
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.92.132:8848
