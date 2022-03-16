@@ -10,6 +10,11 @@
 
     <modules>
         <module>king-user-service</module>
+        <module>king-mybatisplus-service</module>
+        <module>king-rabbitmq-producer-service</module>
+        <module>king-rabbitmq-consume-service</module>
+        <module>king-order-service</module>
+        <module>king-springbootadmin-service</module>
     </modules>
 
     <packaging>pom</packaging>
