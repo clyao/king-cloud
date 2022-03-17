@@ -14,6 +14,7 @@
         <module name="king-mybatisplus-service" />
         <module name="king-rabbitmq-consume-service" />
         <module name="king-redis-service" />
+        <module name="king-springsecurity-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -23,6 +24,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="king-order-service" options="" />
+      <module name="king-springsecurity-service" options="" />
       <module name="king-user-service" options="" />
       <module name="user-service" options="" />
     </option>

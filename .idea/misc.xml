@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/user-service/pom.xml" />
         <option value="$PROJECT_DIR$/king-user-service/pom.xml" />
         <option value="$PROJECT_DIR$/king-order-service/pom.xml" />
+        <option value="$PROJECT_DIR$/king-springsecurity-service/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

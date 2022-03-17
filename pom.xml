@@ -16,6 +16,7 @@
         <module>king-order-service</module>
         <module>king-springbootadmin-service</module>
         <module>king-redis-service</module>
+        <module>king-springsecurity-service</module>
     </modules>
 
     <packaging>pom</packaging>
