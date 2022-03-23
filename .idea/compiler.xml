@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="king-user-service" />
+        <module name="king-basis-service" />
         <module name="king-order-service" />
         <module name="king-springbootadmin-service" />
         <module name="king-rabbitmq-producer-service" />
@@ -23,6 +24,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="king-basis-service" options="" />
       <module name="king-order-service" options="" />
       <module name="king-springsecurity-service" options="" />
       <module name="king-user-service" options="" />
