@@ -1,5 +1,7 @@
 package com.clyao.mybatisplustest.mapper;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.clyao.mybatisplustest.entity.User;
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Repository;
 * @createDate 2022-03-08 15:55:53
 * @Entity com.clyao.mybatisplustest.entity.User
 */
-@Repository
+@Mapper
 public interface UserMapper extends BaseMapper<User> {
 
     List<User> selectAllByName(@Param("name") String name);

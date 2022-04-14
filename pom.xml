@@ -17,6 +17,11 @@
         <module>king-springbootadmin-service</module>
         <module>king-redis-service</module>
         <module>king-springsecurity-service</module>
+        <module>king-basis-service</module>
+        <module>king-shiro-service</module>
+        <module>king-gateway-service</module>
+        <module>king-thymeleaf-service</module>
+        <module>king-jwt-service</module>
     </modules>
 
     <packaging>pom</packaging>

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.clyao.mybatisplustest.entity.User;
 import com.clyao.mybatisplustest.mapper.UserMapper;
+import com.clyao.mybatisplustest.service.impl.UserServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +20,9 @@ class KingMybatisplusApplicationTests {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private UserServiceImpl userService;
 
     @Test
     public void test1(){

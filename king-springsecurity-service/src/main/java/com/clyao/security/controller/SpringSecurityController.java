@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class SpringSecurityController {
 
+    @GetMapping("/login")
+    public String login(){
+        return "success";
+    }
+
     @GetMapping("/hello")
     public String hello(){
         log.info("xxxx");

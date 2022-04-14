@@ -7,15 +7,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="king-order-service" />
+        <module name="king-thymeleaf-service" />
+        <module name="king-mybatisplus-service" />
+        <module name="king-shiro-service" />
         <module name="king-user-service" />
         <module name="king-basis-service" />
-        <module name="king-order-service" />
         <module name="king-springbootadmin-service" />
         <module name="king-rabbitmq-producer-service" />
-        <module name="king-mybatisplus-service" />
         <module name="king-rabbitmq-consume-service" />
+        <module name="king-gateway-service" />
         <module name="king-redis-service" />
         <module name="king-springsecurity-service" />
+        <module name="king-jwt-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

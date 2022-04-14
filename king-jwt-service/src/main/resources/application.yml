@@ -1,0 +1,6 @@
+jwt:
+  config:
+    key: king
+    ttl: 360000
+server:
+  port: 8023

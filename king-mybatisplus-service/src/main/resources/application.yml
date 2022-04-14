@@ -1,8 +1,10 @@
 # DataSource Config
+server:
+  port: 8020
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.92.132:3306/test
+    url: jdbc:mysql://192.168.31.100:3306/test
     username: root
     password: 123456
   redis:

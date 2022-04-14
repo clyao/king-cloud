@@ -2,6 +2,7 @@ package com.clyao.mybatisplustest.mapper;
 
 import com.clyao.mybatisplustest.entity.Student;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Repository;
  * @author clyao
  * @since 2022-03-08
  */
-@Repository
+@Mapper
 public interface StudentMapper extends BaseMapper<Student> {
 
 }
