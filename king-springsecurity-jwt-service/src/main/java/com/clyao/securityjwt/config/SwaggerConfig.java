@@ -58,7 +58,7 @@ public class SwaggerConfig {
 
         SecurityContext securityContext = SecurityContext.builder()
                 .securityReferences(securityReferenceList)
-                .forPaths(PathSelectors.regex("/test/.*"))
+                .operationSelector(o -> o.requestMappingPattern().matches("/.*"))
                 .build();
 
         List<SecurityContext> securityContextList = new ArrayList<>();

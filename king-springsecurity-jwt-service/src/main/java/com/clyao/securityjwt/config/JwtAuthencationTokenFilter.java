@@ -1,5 +1,6 @@
 package com.clyao.securityjwt.config;
 
+import com.clyao.securityjwt.service.impl.UserDetailsServiceImpl;
 import com.clyao.securityjwt.utils.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +21,7 @@ import java.io.IOException;
 /**
  * jwt登录授权过滤器
  */
+@Component
 public class JwtAuthencationTokenFilter extends OncePerRequestFilter {
 
     @Value("${jwt.tokenHeader}")
@@ -32,14 +34,14 @@ public class JwtAuthencationTokenFilter extends OncePerRequestFilter {
     private JwtTokenUtil jwtTokenUtil;
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserDetailsServiceImpl userDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String authHeader = request.getHeader(tokenHeader);
         //存在token
         if(null != authHeader && authHeader.startsWith(tokenHead)){
-            String authToken = authHeader.substring(tokenHead.length());
+            String authToken = authHeader.substring(tokenHead.length()+1);
             String username = jwtTokenUtil.getUserNameFromToken(authToken);
             //token存在用户名但未登录
             if(null != username && null == SecurityContextHolder.getContext().getAuthentication()){

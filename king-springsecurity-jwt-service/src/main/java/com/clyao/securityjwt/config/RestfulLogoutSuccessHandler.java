@@ -3,8 +3,8 @@ package com.clyao.securityjwt.config;
 import com.clyao.securityjwt.pojo.Result;
 import com.clyao.securityjwt.utils.ResultUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
@@ -14,17 +14,17 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * 当未登录或者token失效时访问接口，自定义返回结果
+ * 自定义退出登录过滤器
  */
-public class RestAuthorizationEnrtyPoint implements AuthenticationEntryPoint {
+@Component
+public class RestfulLogoutSuccessHandler implements LogoutSuccessHandler {
 
     @Override
-    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
-        Result result = ResultUtil.error("尚未登录，请登录");
-        result.setCode(401);
+        Result result = ResultUtil.success("成功退出");
         out.write(new ObjectMapper().writeValueAsString(result));
         out.flush();
         out.close();

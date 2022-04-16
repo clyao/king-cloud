@@ -3,8 +3,8 @@ package com.clyao.securityjwt.config;
 import com.clyao.securityjwt.pojo.Result;
 import com.clyao.securityjwt.utils.ResultUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
@@ -14,18 +14,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * 权限认证失败
+ * 当未登录或者token失效时访问接口，自定义返回结果
  */
 @Component
-public class RestfulAccessDeniedHandler implements AccessDeniedHandler {
+public class RestfulAuthorizationEnrtyPoint implements AuthenticationEntryPoint {
 
     @Override
-    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
+    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
-        Result result = ResultUtil.error("权限不足，请联系管理员");
-        result.setCode(403);
+        Result result = ResultUtil.error("尚未登录，请登录");
+        result.setCode(401);
         out.write(new ObjectMapper().writeValueAsString(result));
         out.flush();
         out.close();
