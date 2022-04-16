@@ -22,6 +22,7 @@
         <module>king-gateway-service</module>
         <module>king-thymeleaf-service</module>
         <module>king-jwt-service</module>
+        <module>king-springsecurity-jwt-service</module>
     </modules>
 
     <packaging>pom</packaging>

@@ -1,0 +1,38 @@
+server:
+  port: 8023
+spring:
+  application:
+    name: king-user-service
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.31.100:3306/test?serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+
+# Mybatis-plus 配置
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+  type-aliases-package: com.clyao.security.pojo
+  configuration:
+    map-underscore-to-camel-case: false
+
+# Mybatis sql 打印
+logging:
+  level:
+    com.clyao.securityjwt: debug
+
+jwt:
+  # jwt存储的请求头
+  tokenHeader: Authorization
+  # jwt 加密使用的密钥
+  secret: yeb-secret
+  # jwt 超时时间
+  expiration: 604800
+  # jwt 负载中拿到开头
+  tokenHead: Bearer
+
