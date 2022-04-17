@@ -1,5 +1,6 @@
 package com.clyao.securityjwt.service.impl;
 
+import com.clyao.securityjwt.pojo.Role;
 import com.clyao.securityjwt.pojo.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -7,7 +8,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -22,13 +25,21 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         //这里是模拟数据，可以查询数据库进行用户名验证
 
-        User userEntity = new User();
-        userEntity.setId(1);
-        userEntity.setUsername("king");
-        userEntity.setPassword("123456");
-        userEntity.setAge(20);
-        if(userEntity.getUsername().equals(username)){
-            return userEntity;
+        List<Role> roleList = new ArrayList<>();
+        Role role = new Role();
+        role.setRoleId(1);
+        role.setRoleName("普通用户");
+        role.setRoleKey("role1");
+        roleList.add(role);
+
+        User user = new User();
+        user.setId(1);
+        user.setUsername("king");
+        user.setPassword("123456");
+        user.setAge(20);
+        user.setRoles(roleList);
+        if(user.getUsername().equals(username)){
+            return user;
         }
         return null;
     }

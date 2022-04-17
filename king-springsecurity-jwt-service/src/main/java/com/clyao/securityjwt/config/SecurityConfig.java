@@ -4,12 +4,14 @@ import com.clyao.securityjwt.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -44,6 +46,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Autowired
     private RestfulAccessDeniedHandler restfulAccessDeniedHandler;
+
+    /**
+     * 动态权限管理
+     */
+    @Autowired
+    private RestfulUrlDecisionManager restfulUrlDecisionManager;
+
+    /**
+     * url过滤
+     */
+    @Autowired
+    private RestfulUrlFiter restfulUrlFiter;
 
     /**
      * 身份认证接口
@@ -91,6 +105,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/swagger-resources/**",
                         "/v2/api-docs/**"
                 ).anonymous()
+                //动态权限配置
+                .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
+                    @Override
+                    public <O extends FilterSecurityInterceptor> O postProcess(O object) {
+                        object.setAccessDecisionManager(restfulUrlDecisionManager);
+                        object.setSecurityMetadataSource(restfulUrlFiter);
+                        return object;
+                    }
+                })
                 //所有请求都需要认证
                 .anyRequest().authenticated().and()
                 .headers()

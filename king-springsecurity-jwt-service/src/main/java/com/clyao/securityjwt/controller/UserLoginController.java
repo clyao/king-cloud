@@ -1,6 +1,7 @@
 package com.clyao.securityjwt.controller;
 
 import com.clyao.securityjwt.pojo.Result;
+import com.clyao.securityjwt.pojo.Role;
 import com.clyao.securityjwt.pojo.User;
 import com.clyao.securityjwt.service.impl.UserDetailsServiceImpl;
 import com.clyao.securityjwt.utils.JwtTokenUtil;
@@ -15,7 +16,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -82,9 +85,22 @@ public class UserLoginController {
         if(null == principal){
             return null;
         }
+
+        List<Role> roleList = new ArrayList<>();
+        Role role = new Role();
+        role.setRoleId(1);
+        role.setRoleName("普通用户");
+        role.setRoleKey("role1");
+        roleList.add(role);
+
         String username = principal.getName();
-        User userEntity = new User();
-        return userEntity;
+        User user = new User();
+        user.setId(1);
+        user.setUsername("king");
+        user.setPassword("123456");
+        user.setAge(20);
+        user.setRoles(roleList);
+        return user;
     }
 
 
