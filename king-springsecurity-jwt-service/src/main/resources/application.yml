@@ -17,7 +17,7 @@ spring:
 # Mybatis-plus 配置
 mybatis-plus:
   mapper-locations: classpath*:/mapper/*Mapper.xml
-  type-aliases-package: com.clyao.security.pojo
+  type-aliases-package: com.clyao.securityjwt.pojo
   configuration:
     map-underscore-to-camel-case: false
 
