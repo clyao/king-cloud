@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.clyao.mybatisplustest.entity.User;
 import com.clyao.mybatisplustest.mapper.UserMapper;
+import com.clyao.mybatisplustest.service.impl.ShopServiceImpl;
 import com.clyao.mybatisplustest.service.impl.UserServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Collections;
+import java.util.List;
 
 @SpringBootTest
 @Slf4j
@@ -23,6 +25,9 @@ class KingMybatisplusApplicationTests {
 
     @Autowired
     private UserServiceImpl userService;
+
+    @Autowired
+    private ShopServiceImpl shopService;
 
     @Test
     public void test1(){
@@ -77,6 +82,12 @@ class KingMybatisplusApplicationTests {
         user.setName("king");
         String s = objectMapper.writeValueAsString(user);
         System.out.println("s:" + s);
+    }
+
+    @Test
+    public void test5(){
+        List<Object> list = shopService.getShop(113.323568, 23.146436);
+        System.out.println(list);
     }
 
 }
