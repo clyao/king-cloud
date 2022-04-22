@@ -1,6 +1,7 @@
 package com.clyao.mybatisplustest.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -35,6 +36,9 @@ public class Student implements Serializable {
     private String email;
 
 
+    private Date createTime;
+
+
     public Long getId() {
         return id;
     }
@@ -67,13 +71,22 @@ public class Student implements Serializable {
         this.email = email;
     }
 
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
-        "id=" + id +
-        ", name=" + name +
-        ", age=" + age +
-        ", email=" + email +
-        "}";
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                ", createTime=" + createTime +
+                '}';
     }
 }

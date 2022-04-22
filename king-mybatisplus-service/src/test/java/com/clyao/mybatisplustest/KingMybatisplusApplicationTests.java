@@ -1,10 +1,13 @@
 package com.clyao.mybatisplustest;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
+import com.clyao.mybatisplustest.entity.Student;
 import com.clyao.mybatisplustest.entity.User;
 import com.clyao.mybatisplustest.mapper.UserMapper;
 import com.clyao.mybatisplustest.service.impl.ShopServiceImpl;
+import com.clyao.mybatisplustest.service.impl.StudentServiceImpl;
 import com.clyao.mybatisplustest.service.impl.UserServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -87,6 +90,18 @@ class KingMybatisplusApplicationTests {
     @Test
     public void test5(){
         List<Object> list = shopService.getShop(113.323568, 23.146436);
+        System.out.println(list);
+    }
+
+    @Autowired
+    private StudentServiceImpl studentService;
+
+    @Test
+    public void test6(){
+        String date = "2022-04-22";
+        QueryWrapper<Student> userQueryWrapper = new QueryWrapper<>();
+        userQueryWrapper.eq("id",1).and(warpper -> warpper.eq("create_time",date).or().ge("create_time",date));
+        List<Student> list = studentService.list(userQueryWrapper);
         System.out.println(list);
     }
 

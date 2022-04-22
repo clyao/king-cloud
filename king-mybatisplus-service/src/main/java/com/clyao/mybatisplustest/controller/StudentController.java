@@ -1,14 +1,16 @@
 package com.clyao.mybatisplustest.controller;
 
+import com.clyao.mybatisplustest.entity.Shop;
 import com.clyao.mybatisplustest.entity.User;
 import com.clyao.mybatisplustest.service.impl.UserServiceImpl;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -33,5 +35,23 @@ public class StudentController {
         System.out.println(byId.toString());
         return "test1";
     }
+
+    @ApiOperation(value = "测试")
+    @GetMapping("/test2/{pageNumbar}/{pageSize}")
+    public String test2(@PathVariable Integer pageNumber, @PathVariable Integer pageSize){
+        return "aaa";
+    }
+
+    @GetMapping("/test3")
+    public String test3(@RequestBody Map<String, Object> params){
+        return "aaa";
+    }
+
+    @PostMapping("/test4")
+    @Schema
+    public String test4(@RequestBody Shop shop){
+        return "aaa";
+    }
+
 
 }
