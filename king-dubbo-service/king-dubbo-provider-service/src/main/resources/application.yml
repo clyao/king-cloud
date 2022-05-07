@@ -1,0 +1,17 @@
+server:
+  port: 8028
+spring:
+  application:
+    name: king-dubbo-provider-service
+dubbo:
+  application:
+    name: king-dubbo-provider-service
+  protocol:
+    name: dubbo
+    port: 21880
+  registry:
+    protocol: zookeeper
+    address: zookeeper://192.168.31.100:2181
+    timeout: 20000
+  scan:
+    base-packages: com.clyao.dubbo.service

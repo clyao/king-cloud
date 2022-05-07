@@ -4,7 +4,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.clyao.mybatisplustest.entity.Student;
+import com.clyao.mybatisplustest.entity.StudentDTO;
 import com.clyao.mybatisplustest.entity.User;
+import com.clyao.mybatisplustest.mapper.StudentMapper;
 import com.clyao.mybatisplustest.mapper.UserMapper;
 import com.clyao.mybatisplustest.service.impl.ShopServiceImpl;
 import com.clyao.mybatisplustest.service.impl.StudentServiceImpl;
@@ -25,6 +27,9 @@ class KingMybatisplusApplicationTests {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private StudentMapper studentMapper;
 
     @Autowired
     private UserServiceImpl userService;
@@ -104,5 +109,17 @@ class KingMybatisplusApplicationTests {
         List<Student> list = studentService.list(userQueryWrapper);
         System.out.println(list);
     }
+
+    @Test
+    public void test7(){
+        List<StudentDTO> student = studentMapper.getStudent();
+        System.out.println(student.toString());
+    }
+
+    @Test
+    public void test8(){
+        studentMapper.getByAll(null);
+    }
+
 
 }

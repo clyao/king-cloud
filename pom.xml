@@ -24,6 +24,9 @@
         <module>king-jwt-service</module>
         <module>king-springsecurity-jwt-service</module>
         <module>king-resttemplate-service</module>
+        <module>king-wxpay-service</module>
+        <module>king-mapstruct-service</module>
+        <module>king-dubbo-service</module>
     </modules>
 
     <packaging>pom</packaging>

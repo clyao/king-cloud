@@ -1,0 +1,14 @@
+server:
+  port: 8025
+spring:
+  application:
+    name: king-wxpay-service
+
+wxpay:
+  mch-id: 1558950191
+  mch-serial-no: 34345964330B66427E0D3D28826C4993C77E631F
+  private-key-path: apiclient_key.pem
+  api-v3-key: UDuLFcmy5Eb6o0nTNZdu6ek4DDh4k8B
+  appid: wx74862e0dfcf69954
+  domain: https://api.mch.weixin.qq.com
+  notify-domain: https://wwww.clyao.com
